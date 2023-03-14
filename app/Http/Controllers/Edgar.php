@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use App\Models\User;
+use App\Models\codes;
+
+use Illuminate\Support\Facades\Auth;
 
 class Edgar extends Controller
 {
@@ -18,13 +21,29 @@ class Edgar extends Controller
     public function index()
     {
         $url =  URL::temporarySignedRoute(
-            'unsubscribe', now()->addMinutes(1), ['user' => 1]
+            'unsubscribe', now()->addMinutes(5), ['user' => 1]
         );
         //$correo = new Correo;
+       
         Mail::to("alejandroguzman2322@gmail.com")->send(new Correo($url));
       
        return view('correo');
     }
+
+    public function verificar()
+    {
+       
+        //$correo = new Correo;
+       
+        //Mail::to("alejandroguzman2322@gmail.com")->send(new Correo($url));
+        $codigo_verf = rand(10000, 99999);
+        $user = Auth::user();
+        $registro = codes::find($user->id);
+        $registro->codigo = $codigo_verf;
+        $registro->save();
+      
+    }
+
 
     public function index2() {
         $users = User::all();

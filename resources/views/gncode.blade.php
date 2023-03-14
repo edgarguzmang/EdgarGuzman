@@ -53,7 +53,7 @@
         <h2 class="h2">Codigo de verificacion</h2>
         <h3 class="h3">Tu codigo de verificacion es </h3>
         <!--<label>Name</label>-->
-        <h2 class="h2">{{$longitude}}</h2>
+        <h2 class="h2">{{$codigo}}</h2>
         <h3 class="h3">Ingresalo en tu aplicacion movil.</h3>
         
         

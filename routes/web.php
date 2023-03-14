@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Verificar;
 use App\Http\Controllers\Edgar;
 use Illuminate\Support\Facades\Route;
 use App\Mail\Correo;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\codes;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,25 +38,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('thor', 
-[Edgar::class, 'index']
-);
+[Edgar::class, 'index']);
 
-Route::get('/unsubscribe/{user}', function (Request $request) {
-    if (! $request->hasValidSignature()) {
-        abort(401);
-    }
+Route::get('/createcode/{user}',[Verificar::class, 'create'])->name('unsubscribe');
+Route::post('/validate-code-web', [Verificar::class, 'storeWeb']);
 
-    else{
-       
-        $longitude =   Str::random(5);
-      
-       
-        //return $key;
-        return view('gncode',compact('longitude'));
-    }
- 
-    // ...
-})->name('unsubscribe');
 
 //Route::get('event/{id}/{user}/{response}', 
 //function ($id, $user, $response) {

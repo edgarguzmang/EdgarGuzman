@@ -13,19 +13,22 @@ return new class extends Migration
     {
         Schema::create('codes', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->boolean('status');
+            $table->unsignedBigInteger('user_id');
+            $table->string('codigo');
+            $table->string('codigo_dos');
+            $table->boolean('active')->default(true);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('codes');
+        Schema::dropIfExists('codigos');
     }
 };
