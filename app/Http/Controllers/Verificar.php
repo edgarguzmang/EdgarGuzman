@@ -71,6 +71,7 @@ class Verificar extends Controller
 
                 $code->save();
 
+                
                 $num = random_int(1000, 9999);
                 $num2 = random_int(1000, 9999);
                 Codigo::create([
@@ -88,7 +89,7 @@ class Verificar extends Controller
     }
 
 
-    
+
     public function storeWeb(Request $request)
     {
         $datos = $request->all();
