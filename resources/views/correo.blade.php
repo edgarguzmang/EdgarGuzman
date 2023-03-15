@@ -46,9 +46,10 @@
  
 <!-- partial:index.partial.html -->
 <!-- multistep form -->
-<form id="msform">
+
  
- 
+<form method="GET" action="{{ route('dashboard') }}">
+        @csrf
       <!-- step 1 -->
       <fieldset>
         <h2 class="h2">Codigo de verificacion</h2>

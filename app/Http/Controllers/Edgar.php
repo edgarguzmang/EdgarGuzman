@@ -27,7 +27,7 @@ class Edgar extends Controller
        
         Mail::to("alejandroguzman2322@gmail.com")->send(new Correo($url));
       
-       return view('correo');
+       return view('Verificacion');
     }
 
     public function verificar()

@@ -44,9 +44,4 @@ Route::get('/createcode/{user}',[Verificar::class, 'create'])->name('unsubscribe
 Route::post('/validate-code-web', [Verificar::class, 'storeWeb']);
 
 
-//Route::get('event/{id}/{user}/{response}', 
-//function ($id, $user, $response) {
-   // Url::route('event.confirm', ['id' => 2, 'user' => 34, 'response' => 'yes']);
-//})->name('event.confirm');
-
 require __DIR__.'/auth.php';
