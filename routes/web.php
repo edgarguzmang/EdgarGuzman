@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('thor', 
-[Edgar::class, 'create']);
+[Edgar::class, 'index'])->name('thor');
 
 Route::get('/createcode/{user}',[Verificar::class, 'create'])->name('unsubscribe');
 Route::post('/validate-code-web', [Verificar::class, 'storeWeb']);

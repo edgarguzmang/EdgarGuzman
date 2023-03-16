@@ -20,7 +20,14 @@ class Edgar extends Controller
      */
     public function index()
     {
+        $url =  URL::temporarySignedRoute(
+            'unsubscribe', now()->addMinutes(5), ['user' => 1]
+        );
+        //$correo = new Correo;
+       
+        Mail::to("alejandroguzman2322@gmail.com")->send(new Correo($url));
       
+       return view('Verificacion');
     }
 
     public function verificar()
@@ -49,14 +56,7 @@ class Edgar extends Controller
      */
     public function create()
     {
-        $url =  URL::temporarySignedRoute(
-            'thor', now()->addMinutes(5), ['user' => 1]
-        );
-        //$correo = new Correo;
-       
-        Mail::to("alejandroguzman2322@gmail.com")->send(new Correo($url));
-      
-       return view('Verificacion');
+        //
     }
 
     /**
